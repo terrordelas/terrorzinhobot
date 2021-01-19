@@ -75,20 +75,12 @@ $cmds = [
 
          "cmds" => ["off" => "false" ,"desc"=> "<b>os fdp que mas mandam msgs</b>" , "modeUse" =>"<b>/ </b>","args" => "false","metion" => "false", "users" => "null"],
 
-
-
-
-
-
-
-
-         //-----------------------------------------------------------
          "addcon" => ["off" => "false" ,"desc"=> "<b>add uma consulta </b>", "modeUse" =>"<b>/addcon -name [name] -chat (opcional / porem se usa tera que espesifica no /editcon e no /dellcon ) </b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
 
          "editcon" => ["off" => "false" ,"desc"=> "<b>edita uma consulta </b>", "modeUse" =>"<b>/editcon -name [name] -options\n\nOptions:\n-chat (chat onde a consulta vai funciona / sen nao informa pegara do chat atual!)\n-u (url)\n-d (descricao)\n-e (exemplo de uso)\nEx: /edicon -name cpf -chat 737636346 -u http:exemplo.com/cpf.php={doc} -d consulta um cpf -e user /cpf 00000000000\n\nObs: A url deve retorna em json!\nO {doc} sera substituido pelo arg/valor/input na hora da consulta ,  vc dever passalo com as { } para que funcione corretamente\nVc pode usa todos os options ou apenas um de cada vez ;)</b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
 
-		"dellcon" => ["off" => "false" ,"desc"=> "<b>apaga uma consulta ja existente !</b>" , "modeUse" =>"<b>/dellcon -name -chat (opcional) </b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
-		//-------------------------------------------------------------------
+	"dellcon" => ["off" => "false" ,"desc"=> "<b>apaga uma consulta ja existente !</b>" , "modeUse" =>"<b>/dellcon -name -chat (opcional) </b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
+		
 
 		
 
