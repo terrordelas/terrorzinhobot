@@ -32,13 +32,16 @@ function request($url , $post = false, $headers = array(),$header = false){
 
 
 function bin($message,$bin){
+	
+	setcon($message);
 	$chatid = $message['chat']['id'];
 	$id = $message['from']['id'];
 	$nome = $message['from']['first_name'].' '.$message['from']['last_name'];
+	$confibot = file_get_contents('./confi.json');
+	$confibot = json_decode($confibot, true);
 	
 	$user = getuser($message);
 	
-	setcon($message);
 	
 	$envia1 = sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "<b>$nome , espera fdp to consultando essa merda</b>","reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
     $dados = getuser($message);
@@ -57,10 +60,10 @@ function bin($message,$bin){
 
 	foreach ($request as $key => $value) {
 
-	if (gettype($value) == object || is_array($value)){
+	if (gettype($value) == arra_ob || is_array($value)){
 		foreach ($value as $key2 => $value2) {
 
-			if (gettype($value2) == object || is_array($value2)){
+			if (gettype($value2) == arra_ob || is_array($value2)){
 				foreach ($value2 as $key3 => $value3) {
 
 					$msg[] = '<b>'.strtoupper($key3).':</b> <code>'.$value3.'</code>';
@@ -77,86 +80,31 @@ function bin($message,$bin){
 
 	}
 
-    sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg),'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+    $msg1 = sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg)."\n\n⚠️Esta mensagem se apagara em 10s⚠️",'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+
+    sleep(10);
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => $message['message_id']));
+
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => json_decode($msg1 , true)['result']['message_id']));
     
 }
 
 
 
-function cpf($message,$cpf){
 
-	$chatid = $message['chat']['id'];
-	$id = $message['from']['id'];
-	$nome = $message['from']['first_name'].' '.$message['from']['last_name'];
-
-	$confibot = file_get_contents('./confi.json');
-	$confibot = json_decode($confibot, true);
-
-	$user = getuser($message);
-	
-	setcon($message);
-
-	$cpf = str_replace(array(".","-", " "),"", $cpf);
-	
-	$envia1 = sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "<b>$nome , espera fdp to consultando essa merda</b>","reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
-    $dados = getuser($message);
-
-    $msgid = json_decode($envia1 , true)['result']['message_id'];
-    $url = $confibot['urlconsulta']['default']['cpf'];
-
-    $request = json_decode(request($url.$cpf,false,array()) , false);
-
-
-	$msg = [];
-
-	foreach ($request as $key => $value) {
-
-		if (gettype($value) == object || is_array($value)){
-			foreach ($value as $key2 => $value2) {
-
-			if (gettype($value2) == object || is_array($value2)){
-				foreach ($value2 as $key3 => $value3) {
-					if (!empty($value3)){
-						$msg[] = '<b>'.strtoupper($key3).':</b> <code>'.$value3.'</code>';
-
-					}
-
-				}	
-			}else{
-				if (!empty($value2)){
-					$msg[] = '<b>'.strtoupper($key2).':</b> <code>'.$value2.'</code>';
-				}
-
-			}
-		}
-
-		}else{
-
-			if (!empty($value)){
-			$msg[] = '<b>'.strtoupper($key).':</b> <code>'.$value.'</code>';
-			}
-
-		}
-	}
-
-    sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg),'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
-    
-
-
-}
 
 function cep ($message,$value){
 	
+	setcon($message);
 	$chatid = $message['chat']['id'];
 	$id = $message['from']['id'];
 	$nome = $message['from']['first_name'].' '.$message['from']['last_name'];
 	
-	$user = getuser($message);
+	$confibot = file_get_contents('./confi.json');
+	$confibot = json_decode($confibot, true);
 	
-	setcon($message);
 	
 	$envia1 = sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "<b>$nome , espera fdp to consultando essa merda</b>","reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
-    $dados = getuser($message);
 
     $msgid = json_decode($envia1 , true)['result']['message_id'];
 
@@ -172,27 +120,28 @@ function cep ($message,$value){
     }
 
     // $envia1 = sendMessage("sendMessage",array("chat_id" => $chatid,'text' =>  implode("\n", $msg)));
-    sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg),'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+      $msg1 = sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg)."\n\n⚠️Esta mensagem se apaga em 5s⚠️",'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+
+    sleep(5);
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => $message['message_id']));
+
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => json_decode($msg1 , true)['result']['message_id']));
 
 }
 
 
 function ip ($message,$value){
-	
+	setcon($message);
 	$chatid = $message['chat']['id'];
 	$id = $message['from']['id'];
 	$nome = $message['from']['first_name'].' '.$message['from']['last_name'];
 	
 
-	preg_match('/^(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/',$ip,$message['text']);
-
-	$user = getuser($message);
-	
-	setcon($message);
+	preg_match('/^(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/',$ip,$message['text']);	
 
 	
 	$envia1 = sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "<b>$nome , espera fdp to consultando essa merda</b>","reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
-    $dados = getuser($message);
+
 
     $msgid = json_decode($envia1 , true)['result']['message_id'];
 
@@ -207,7 +156,12 @@ function ip ($message,$value){
     	$msg[] = '<b>'.strtoupper($key).':</b> <code>'.$value.'</code>';
     }
 
-    sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg),'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+      $msg1 = sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg)."\n\n⚠️Esta mensagem se apaga em 5s⚠️",'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+
+    sleep(5);
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => $message['message_id']));
+
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => json_decode($msg1 , true)['result']['message_id']));
 
 }
 
@@ -223,78 +177,107 @@ function consultavalue($message,$cmd){
 	$confibot = file_get_contents('./confi.json');
 	$confibot = json_decode($confibot, true);
 
-    if ($confibot['urlconsulta'][$chatid][$cmd]){
-        $url = $confibot['urlconsulta'][$chatid][$cmd];
-    }else if ($confibot['urlconsulta']['default'][$cmd]){
-        $url = $confibot['urlconsulta']['default'][$cmd];
-    }else{
-         sendMessage("sendmessage",array("chat_id" => $chatid ,"text" => "error: url nao encontrada !"));
 
-    }
-   
-	$user = getuser($message);
-	
-	setcon($message);
 
 	$txt = substr($message['text'], strlen($cmd)+1);
 
 
-	$value1212 = str_replace(array(".","-"," ", "+","(",")"),"", $txt);
+	$value1212 = $txt;
 	
     if (empty($value1212)){
-        sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "<b>error falta o doc/input a ser consultado use: /cpf [input]</b>","reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
+        $error = ($confibot['consultas'][$chatid][$cmd]['modeUse'] != '') ? $confibot['consultas'][$chatid][$cmd]['modeUse'] : "<b>Error: Informe o valor a ser consultado !\nExemplo: /$cmd [valor]</b>";
+        sendMessage("sendMessage",array("chat_id" => $chatid,'text' => $error,"reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
+        die();
+        
+    }
+
+    if (!$confibot['consultas'][$chatid][$cmd]['url'] || $confibot['consultas'][$chatid][$cmd] == ""){
+    	sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "consulta em manutencao","reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
+    	sendMessage("sendMessage",array("chat_id" => $confibot['consultas'][$chatid][$cmd]['owner'],'text' => "error na consulta: $cmd\ncausa: url vazia",'parse_mode' => "html"));
         die();
     }
 
+
+	$url = str_replace("{doc}", trim($value1212), $confibot['consultas'][$chatid][$cmd]['url']);
+	
 	$envia1 = sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "<b>$nome , espera fdp to consultando [$value1212]</b>","reply_to_message_id"=> $message['message_id'],'parse_mode' => "html"));
 
-    $dados = getuser($message);
 
     $msgid = json_decode($envia1 , true)['result']['message_id'];
    
-    $request = json_decode(request($url.$value1212,false,array()) , false);
+    $request = json_decode(request($url,false,array()) , false);
 
+   
     if (!$request){
 
     	sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => "<b>Ocorreu um error na consulta !!</b>",'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
-        sendMessage("sendmessage",array("chat_id" => $confibot['dono'] ,"text" =>"error na consulta: $url "));
+
+        sendMessage("sendmessage",array("chat_id" => $confibot['consultas'][$chatid][$cmd]['owner'] ,"text" =>"error na consulta: $url "));
 
     	die();
     }
 
 	$msg = [];
 
+	$arra_ob = object;
+
+
 	foreach ($request as $key => $value) {
+		if (gettype($value) == $arra_ob || is_array($value)){
 
-		if (gettype($value) == object || is_array($value)){
+			if (!is_numeric($key)){
+				$msg[] = "$key: \n";
+			}
 			foreach ($value as $key2 => $value2) {
+				if (gettype($value2) == $arra_ob || is_array($value2)){
+					if (!is_numeric($key2)){$msg[] = "$key2: \n";}
+					foreach ($value2 as $k3 => $value3) {
+						if (gettype($value3) == $arra_ob || is_array($value3)){
 
-			if (gettype($value2) == object || is_array($value2)){
-				foreach ($value2 as $key3 => $value3) {
-					if (!empty($value3)){
-						$msg[] = '<b>'.strtoupper($key3).':</b> <code>'.$value3.'</code>';
+							if (!is_numeric($key3)){$msg[] = "$key3: \n";}
+							foreach ($value3 as $key4 => $value4) {
 
+								if (gettype($value4) == $arra_ob || is_array($value4)){
+									if (!is_numeric($key4)){$msg[] = "$key4: \n";}
+										foreach ($value3 as $key5 => $value5) {
+										if (!empty($value5)){
+											$msg[] = '•'.strtoupper($key5).': '.$value5.'';
+										}
+									}
+								}else{
+									if (!empty($value4)){
+										$msg[] = '•'.strtoupper($key4).': '.$value4.'';
+									}
+								}
+							}
+						}else{
+							if (!empty($value3)){
+								$msg[] = '•'.strtoupper($key3).': '.$value3.'';
+							}
+						}
 					}
-
-				}	
-			}else{
-				if (!empty($value2)){
-					$msg[] = '<b>'.strtoupper($key2).':</b> <code>'.$value2.'</code>';
+				}else{
+					if (!empty($value2)){
+						$msg[] = '•'.strtoupper($key2).': '.$value2.'';
+					}
 				}
-
 			}
-		}
-
 		}else{
-
 			if (!empty($value)){
-				$msg[] = '<b>'.strtoupper($key).':</b> <code>'.$value.'</code>';
+				$msg[] = '•'.strtoupper($key).': '.$value.'';
 			}
-
 		}
 	}
 
-    sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg),'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+	
+	// sendMessage("sendMessage",array("chat_id" => $chatid,'text' => $msg));
+
+    $msg1 = sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $msgid,"text" => implode("\n", $msg)."\n\n⚠️Esta mensagem se apaga em 5s⚠️",'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
+
+    sleep(5);
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => $message['message_id']));
+
+    bot("deleteMessage",array("chat_id" => $chatid , "message_id" => json_decode($msg1 , true)['result']['message_id']));
     
 
 

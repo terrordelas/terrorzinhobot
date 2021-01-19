@@ -1,1 +1,792 @@
-{"user":"user"}
+{
+    "1196738148": {
+        "nome": "BULLTEZ ABANDONADO㋡",
+        "totalmsg": 3,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079378,
+        "last_msg": 1611080987,
+        "username": "VERIFICADA",
+        "adm": "false"
+    },
+    "1070895911": {
+        "nome": "ʜᴀᴅᴇᴢᴏᴋᴋᴀ ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079389,
+        "last_msg": 1611079387,
+        "username": "LORDHADES1327",
+        "adm": "false"
+    },
+    "1018482440": {
+        "nome": "ᴋʀᴀᴛᴏs FTP ",
+        "totalmsg": 52,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079415,
+        "last_msg": 1611085025,
+        "username": "Kratos56",
+        "adm": "false"
+    },
+    "1093905382": {
+        "nome": "ÍNDIO COMER XOTA 😎👌 ",
+        "totalmsg": 0,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079421,
+        "last_msg": 1611079421,
+        "username": "terrordelas",
+        "adm": "true"
+    },
+    "1103748960": {
+        "nome": "Stw Imperio",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079452,
+        "last_msg": 1611079451,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "1127963377": {
+        "nome": "NEXUS TAMO ON",
+        "totalmsg": 4,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079521,
+        "last_msg": 1611080831,
+        "username": "NexusWISH",
+        "adm": "false"
+    },
+    "1409234456": {
+        "nome": "Obito Login`S",
+        "totalmsg": 14,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079532,
+        "last_msg": 1611084935,
+        "username": "Obito_Logins",
+        "adm": "false"
+    },
+    "1275147088": {
+        "nome": "Harix ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079543,
+        "last_msg": 1611079543,
+        "username": "HariD7",
+        "adm": "false"
+    },
+    "1439507810": {
+        "nome": "Elton Sousa",
+        "totalmsg": 6,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079546,
+        "last_msg": 1611084107,
+        "username": "Eltonnsousa",
+        "adm": "false"
+    },
+    "1548377256": {
+        "nome": "Scorpion Prime",
+        "totalmsg": 4,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079562,
+        "last_msg": 1611079630,
+        "username": "Scorpiion21",
+        "adm": "false"
+    },
+    "1466528731": {
+        "nome": "MeNenDeZ [MDL] PRINCIPAL",
+        "totalmsg": 20,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079575,
+        "last_msg": 1611084330,
+        "username": "MendezDev",
+        "adm": "false"
+    },
+    "775924574": {
+        "nome": "DUDU DA PAZ ",
+        "totalmsg": 5,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079583,
+        "last_msg": 1611082186,
+        "username": "Soudapaz12",
+        "adm": "false"
+    },
+    "777000": {
+        "nome": "Telegram ",
+        "totalmsg": 10,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079752,
+        "last_msg": 1611084451,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "1173257102": {
+        "nome": "ISAQUE BAIANO ",
+        "totalmsg": 17,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079822,
+        "last_msg": 1611084909,
+        "username": "ISAQUE09",
+        "adm": "false"
+    },
+    "1540444183": {
+        "nome": "Ronaldo Júnior Júnior",
+        "totalmsg": 3,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611079840,
+        "last_msg": 1611083585,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "1461377870": {
+        "nome": "BLACK VALDEZ 'DONO DA BLACKCENTER' ",
+        "totalmsg": 21,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080087,
+        "last_msg": 1611084959,
+        "username": "blackvaldes777",
+        "adm": "false"
+    },
+    "1217114678": {
+        "nome": "recarga ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080097,
+        "last_msg": 1611080097,
+        "username": "Showrecargas",
+        "adm": "false"
+    },
+    "1009530001": {
+        "nome": "ADM MENDES ",
+        "totalmsg": 11,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080107,
+        "last_msg": 1611081163,
+        "username": "ADMMARTINSS",
+        "adm": "false"
+    },
+    "1406507068": {
+        "nome": "Pl4net CODER",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080159,
+        "last_msg": 1611080158,
+        "username": "Pl4netCoder",
+        "adm": "false"
+    },
+    "964439173": {
+        "nome": "PECADORsx ",
+        "totalmsg": 41,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080264,
+        "last_msg": 1611084472,
+        "username": "PECADORsx",
+        "adm": "false"
+    },
+    "1353416305": {
+        "nome": "👑 GLEYSSON GRINGO 👑",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080479,
+        "last_msg": 1611080479,
+        "username": "Gleysson_CCS",
+        "adm": "false"
+    },
+    "1459449173": {
+        "nome": "<TelaAzul> FaTNiggaZ ..",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080574,
+        "last_msg": 1611080574,
+        "username": "fatniggaz",
+        "adm": "false"
+    },
+    "1456984443": {
+        "nome": "Jeo Lins",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080606,
+        "last_msg": 1611080659,
+        "username": "Jeovvana",
+        "adm": "false"
+    },
+    "1428314748": {
+        "nome": "Duzz .",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080668,
+        "last_msg": 1611080667,
+        "username": "donotkn0w",
+        "adm": "false"
+    },
+    "886827648": {
+        "nome": "DNLH ᵂᴼᴿᴸᴰᴾᴿᴱᴹᴵᵁᴹ-ᶜᴴᴷˢ ",
+        "totalmsg": 14,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080716,
+        "last_msg": 1611083780,
+        "username": "DNLH15",
+        "adm": "false"
+    },
+    "1208466034": {
+        "nome": "TETO MC",
+        "totalmsg": 4,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080784,
+        "last_msg": 1611080850,
+        "username": "McTETO",
+        "adm": "false"
+    },
+    "1408729996": {
+        "nome": "irmão do n1x j.a.y.a ",
+        "totalmsg": 6,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080798,
+        "last_msg": 1611081865,
+        "username": "meninodo7",
+        "adm": "false"
+    },
+    "689190350": {
+        "nome": "MINI KRATOS FTP ",
+        "totalmsg": 25,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080849,
+        "last_msg": 1611085050,
+        "username": "MINIKRATOS",
+        "adm": "false"
+    },
+    "1216355026": {
+        "nome": "ᴍᴋ ₘₐₙᖱᵣₐₖ",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080919,
+        "last_msg": 1611082258,
+        "username": "mk_rico",
+        "adm": "false"
+    },
+    "755176123": {
+        "nome": "Marcos Luter",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611080946,
+        "last_msg": 1611080945,
+        "username": "Marcosluterino",
+        "adm": "false"
+    },
+    "1415182177": {
+        "nome": "𝗚𝗼𝗼𝗴𝗹𝗶𝗻𝗵𝗼 ",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081038,
+        "last_msg": 1611081050,
+        "username": "Kitarei",
+        "adm": "false"
+    },
+    "349986917": {
+        "nome": "Lúcifer ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081081,
+        "last_msg": 1611081081,
+        "username": "Anonymous_WL",
+        "adm": "false"
+    },
+    "774856408": {
+        "nome": "Tio Óbvio",
+        "totalmsg": 6,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081121,
+        "last_msg": 1611081214,
+        "username": "Tio889",
+        "adm": "false"
+    },
+    "856392415": {
+        "nome": "Guilherme Corrêa",
+        "totalmsg": 9,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081288,
+        "last_msg": 1611083287,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "1455996452": {
+        "nome": "Fabio Camargo",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081310,
+        "last_msg": 1611081309,
+        "username": "fabio_camargo13",
+        "adm": "false"
+    },
+    "1482891881": {
+        "nome": "element ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081320,
+        "last_msg": 1611081319,
+        "username": "Elementziiim",
+        "adm": "false"
+    },
+    "1258513259": {
+        "nome": "</Lorenzo Trampos (ID : 1258513259)</>",
+        "totalmsg": 7,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081323,
+        "last_msg": 1611081889,
+        "username": "Lorenzo_Trampos",
+        "adm": "false"
+    },
+    "961660117": {
+        "nome": "VELOX SSH 🚀🇧🇷 ( ID 961660117)",
+        "totalmsg": 4,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081365,
+        "last_msg": 1611083672,
+        "username": "VELOXSSH",
+        "adm": "false"
+    },
+    "1291677601": {
+        "nome": "mandraka Oficial",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081467,
+        "last_msg": 1611081467,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "463736695": {
+        "nome": "Juninho ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081732,
+        "last_msg": 1611081732,
+        "username": "Su8ZerO",
+        "adm": "false"
+    },
+    "1366582406": {
+        "nome": "<TelaAzul> SkipSkool",
+        "totalmsg": 6,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081736,
+        "last_msg": 1611082397,
+        "username": "SkipSkool",
+        "adm": "false"
+    },
+    "1392185164": {
+        "nome": "YAGO ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081737,
+        "last_msg": 1611081737,
+        "username": "ccs55g",
+        "adm": "false"
+    },
+    "1470615246": {
+        "nome": "Jorgin762 ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081815,
+        "last_msg": 1611081814,
+        "username": "I600Kill",
+        "adm": "false"
+    },
+    "1400467376": {
+        "nome": "Eu Nao Sou Ninguém Nao Quero Ser Ninguém So Quero Cumprir O Plano Que No Fim E Pelo Bem",
+        "totalmsg": 3,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081851,
+        "last_msg": 1611084128,
+        "username": "Ninguem_importante",
+        "adm": "false"
+    },
+    "704593956": {
+        "nome": "Root ",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081888,
+        "last_msg": 1611081887,
+        "username": "Root171",
+        "adm": "false"
+    },
+    "887610262": {
+        "nome": "Tecshot ",
+        "totalmsg": 8,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611081929,
+        "last_msg": 1611082408,
+        "username": "tecshoticc",
+        "adm": "false"
+    },
+    "1034801379": {
+        "nome": "Kimi 🌀 ",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082036,
+        "last_msg": 1611082073,
+        "username": "kimixxy",
+        "adm": "false"
+    },
+    "1395717608": {
+        "nome": "Matue sal",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082047,
+        "last_msg": 1611082047,
+        "username": "Matuesal",
+        "adm": "false"
+    },
+    "1533287275": {
+        "nome": "Mauro Mal",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082075,
+        "last_msg": 1611082075,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "1308758173": {
+        "nome": "Tmods Dimas",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082182,
+        "last_msg": 1611082182,
+        "username": "Terror_dimas2",
+        "adm": "false"
+    },
+    "952620257": {
+        "nome": "LIMA VK 🇲🇦🤬",
+        "totalmsg": 5,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082239,
+        "last_msg": 1611084015,
+        "username": "Limaff007",
+        "adm": "false"
+    },
+    "1498822070": {
+        "nome": "marco chipeiro Tim claro e oi",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082279,
+        "last_msg": 1611082278,
+        "username": "marcochipeiro",
+        "adm": "false"
+    },
+    "1180143426": {
+        "nome": "HCBEM ",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082350,
+        "last_msg": 1611082929,
+        "username": "irineudo7",
+        "adm": "false"
+    },
+    "902672845": {
+        "nome": "MILÃO FORTALEZA",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082360,
+        "last_msg": 1611082359,
+        "username": "MILAOFORTALEZA",
+        "adm": "false"
+    },
+    "1220272691": {
+        "nome": "ϲαяιοϲα < ʀ&ᴄ />",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082472,
+        "last_msg": 1611082472,
+        "username": "cariocamafiadostutorsoficial",
+        "adm": "false"
+    },
+    "1208964550": {
+        "nome": "SEC ",
+        "totalmsg": 3,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082623,
+        "last_msg": 1611083012,
+        "username": "zsec2",
+        "adm": "false"
+    },
+    "1483657759": {
+        "nome": "Lets Go",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082771,
+        "last_msg": 1611082776,
+        "username": "vidapur4",
+        "adm": "false"
+    },
+    "1412468255": {
+        "nome": "Thu ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082838,
+        "last_msg": 1611082837,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "464536330": {
+        "nome": "[¥∆]W4rkChks™ ",
+        "totalmsg": 18,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611082986,
+        "last_msg": 1611085069,
+        "username": "W4rkChks",
+        "adm": "false"
+    },
+    "1350043226": {
+        "nome": "</>BRN DESIGNER [NOTZCENTER] and [BLACKCENTER]</>",
+        "totalmsg": 7,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083023,
+        "last_msg": 1611084197,
+        "username": "brnnnap",
+        "adm": "false"
+    },
+    "1435302965": {
+        "nome": "Jason Voorhees | 𝘼𝙉𝙏𝙄 - 𝐒𝐎𝐂𝐈𝐄𝐓𝐘 🎭",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083144,
+        "last_msg": 1611083144,
+        "username": "JasonVoorheeS2",
+        "adm": "false"
+    },
+    "1100501848": {
+        "nome": "DG FAIXA PRETA {ƊƛƦƘԼƳƝ¹⁷¹} Cv",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083366,
+        "last_msg": 1611083366,
+        "username": "Dgfaixapretacv",
+        "adm": "false"
+    },
+    "1529786490": {
+        "nome": "Dbs Br ",
+        "totalmsg": 4,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083412,
+        "last_msg": 1611083585,
+        "username": "Bds77r",
+        "adm": "false"
+    },
+    "746159307": {
+        "nome": "€₳ɌƉƗ₦₲ ₦Ɇ₮₩ØɌԞ 336 OFC",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083557,
+        "last_msg": 1611083556,
+        "username": "Senhordopassado1",
+        "adm": "false"
+    },
+    "1537168700": {
+        "nome": "Helen Bradley",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083586,
+        "last_msg": 1611083585,
+        "username": "HellyBrady",
+        "adm": "false"
+    },
+    "1169056613": {
+        "nome": "vem comopae",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083608,
+        "last_msg": 1611083608,
+        "username": "vemcomopae",
+        "adm": "false"
+    },
+    "1424736091": {
+        "nome": "SUFFERING ",
+        "totalmsg": 4,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083729,
+        "last_msg": 1611083797,
+        "username": "WXZYP",
+        "adm": "false"
+    },
+    "1269474618": {
+        "nome": "coringa Hrc",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083848,
+        "last_msg": 1611083847,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "1146918091": {
+        "nome": "Smolk Tramp",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083884,
+        "last_msg": 1611083884,
+        "username": "Smolktrampo",
+        "adm": "false"
+    },
+    "1402863395": {
+        "nome": "Dani Aguiar🌹",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611083966,
+        "last_msg": 1611083966,
+        "username": "DaniBitch",
+        "adm": "false"
+    },
+    "989650167": {
+        "nome": "Tay Silva ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084053,
+        "last_msg": 1611084053,
+        "username": "Tsnet13",
+        "adm": "false"
+    },
+    "1273021187": {
+        "nome": "Felipe_GN ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084087,
+        "last_msg": 1611084087,
+        "username": "Felipe_GN",
+        "adm": "false"
+    },
+    "1266385281": {
+        "nome": "MenóTodyy ",
+        "totalmsg": 3,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084310,
+        "last_msg": 1611084351,
+        "username": "eloBB",
+        "adm": "false"
+    },
+    "1431231687": {
+        "nome": "Medusa ",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084332,
+        "last_msg": 1611084331,
+        "username": "medusaksk",
+        "adm": "false"
+    },
+    "1345302612": {
+        "nome": "ᴳᴬᴮᴿᴵᴱᴸᴬ_ˢᴾ ",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084441,
+        "last_msg": 1611084449,
+        "username": "GABIELLA_SP",
+        "adm": "false"
+    },
+    "1031657501": {
+        "nome": "rimuro novo telegram",
+        "totalmsg": 2,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084453,
+        "last_msg": 1611084822,
+        "username": "rimuro2",
+        "adm": "false"
+    },
+    "1174233988": {
+        "nome": "MenorzinZLSP Cdd",
+        "totalmsg": 0,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084569,
+        "last_msg": 1611084569,
+        "username": "undefined",
+        "adm": "false"
+    },
+    "1422216057": {
+        "nome": "Rico Mayck",
+        "totalmsg": 1,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611084896,
+        "last_msg": 1611084895,
+        "username": "RICODEDIMA",
+        "adm": "false"
+    },
+    "1400959367": {
+        "nome": "Felipe Silva",
+        "totalmsg": 0,
+        "contador": 0,
+        "totalcon": 0,
+        "cadastro": 1611085059,
+        "last_msg": 1611085059,
+        "username": "Frepjack",
+        "adm": "false"
+    }
+}
