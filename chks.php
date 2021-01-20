@@ -18,34 +18,34 @@ function chk($msg,$cmd){
     $lista = explode("\n", $lista);
 
 
-    $confibot = file_get_contents('./confi.json');
-    $confibot = json_decode($confibot, true);
+    $confi = file_get_contents('./confi.json');
+    $confibot = json_decode($confi, true);
 
 
-    if ($confibot['chks'][$chatid][$cmd]){
-        $url = $confibot['chks'][$chatid][$cmd]['url'];
-        $mode = $confibot['chks'][$chatid][$cmd]['modeUse'];
+    $chatchks = ($confibot['chks'][$chatid][$cmd]) ? $chatid : "default";
 
-    }else if ($confibot['chks'][$chatid][$cmd]['default']){
-        $url = $confibot['chks']['default'][$cmd]['url'];
-        $mode = $confibot['chks']['default'][$cmd]['modeUse'];
-
-    }else{
-        die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "Url not found" , "reply_to_message_id" => $msg['message_id'])));
-    }
-
+    
     if (sizeof($lista) > 10){
 	    die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "sorry, but you crossed the limit (10)" , "reply_to_message_id" => $msg['message_id'])));
 
     }
 
 
-    if ($lista[0] == ''){
-         die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => $mode , "reply_to_message_id" => $msg['message_id'] , "parse_mode" => 'Markdown')));
+    if ($lista[0] == '' || empty($lista)){
+        // $mode = ($confibot['chks'][$chatchks][$cmd]['modeUse'] != false) ?$confibot['chks'][$chatchks][$cmd]['modeUse'] : "Lista esta vazia";
+        //  die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => $mode , "reply_to_message_id" => $msg['message_id'] , "parse_mode" => 'Markdown')));
+        die;
     }
 
-   
-  
+    $url = ($confibot['chks'][$chatchks][$cmd]['url']);
+    
+    if (empty($url)){
+        bot('sendMessage' , array('chat_id' => $chatid , "text" => "chk em manutencao" , "reply_to_message_id" => $msg['message_id'] , "parse_mode" => 'Markdown'));
+
+        bot('sendMessage' , array('chat_id' => $confibot['chks'][$chatchks][$cmd]['owner'] , "text" => "error no chk\ncmd: $cmd\ncausa: url vazia" ));
+
+        die();
+    }
     $msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => "Arguade um pouco !", "reply_to_message_id" => $msg['message_id'] ));
 
     $msgid = json_decode($msgen ,true )['result']['message_id'];
@@ -54,11 +54,12 @@ function chk($msg,$cmd){
     $erros = 0;
     $lives = [];
     $status = 'parado';
+
     for ($i=0; $i < sizeof($lista) ; $i++) { 
      
     	$lista2 = str_replace(array(" ",'/','!',":"), "|", trim($lista[$i]));
         if (empty($lista2)){
-            die($msgen = bot('sendMessage' , array('chat_id' => $chatid , "text" => $mode , "reply_to_message_id" => $msg['message_id'] , "parse_mode" => 'Markdown')));
+            die();
             break;
         }
 
