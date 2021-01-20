@@ -443,8 +443,10 @@
 		if ($user[$chatid]['contador'] >= 50){
 			$msgs = $confibot['spam'][$chatid];
 			$msgs = array_values($msgs);
-			$spammer = $msgs[array_rand($msgs)];
-			sendMessage("sendMessage",array("chat_id" => $chatid,'text' =>$spammer,'parse_mode'=>'html'));
+			if (!$msgs[array_rand($msgs)]){
+				sendMessage("sendMessage",array("chat_id" => $chatid,'text' =>$msgs[array_rand($msgs)],'parse_mode'=>'html'));
+			}
+			
 
 			$user[$chatid]['contador'] = 0;
 
@@ -1015,185 +1017,6 @@ function buscaprox ($msg,$busca){
 	return $positions[$prox];
 }
 
-function addchk($msg){
-	$chatid = $msg['chat']['id'];
-
-	$args = explode(" ", $msg['text']);
-	$cmd = $args[1];
-	$str = $msg['text'];
-	
-	$user_id = $msg['from']['id'];
-	$cmds = ["-C","-D","-E" , "-DELL" , "-S","-U"];
-	$keys  = explode("-", $str);
-	unset($keys[0]);
-	$cmdstrue = 0;
-	foreach ($keys as $key) {
-		$key  = "-".explode(" ", $key)[0];
-		if (in_array($key, $cmds)){
-			$cmdstrue ++;
-		}
-		
-		
-	}
-	
-
-	if ($cmdstrue == 0){
-		die(bot('sendMessage' , array( 'chat_id' => $chatid , "text" => "<b>Error !\nuse: /addchk [nome chk]\nobs:este cmd funciona atras de urls , urls dos chks ja hospedados  !\noptins: \n/addchk [cmd] -C (especifica o chat / grupo ) caso nao seja especificado ele ira recebe do chat atual\n/addchk [cmd] -D (altera a descricao de chk /ja add no bot ) \n/addchk [cmd] -E (altera o exemplo de uso do cmd)\n/addchk [cmd] -U (add a url do chk)\n/addchk [cmd] -S (altera o status do cmd on/off use: sim para fica off e nao para deixa on )\n/addchk [cmd] -DELL (apagara este cmd use: /addchk [cmd] -DELL )\nexemplo:\n/addchk ggs -C -1001330941820 -D checa ggs -E use: /ggs 4982xx|1x|2022|xx</b>","parse_mode" => "html")));
-	}
-	
-	if (empty($cmd) || $cmd == "-D" || $cmd == "-C" || $cmd == "-E" || $cmd == "-S" || $cmd == "-DELL"){
-		die(bot('sendMessage' , array( 'chat_id' => $chatid , "text" => "<b>Error !\nuse: /addchk [nome chk]\nobs:este cmd funciona atras de urls , urls dos chks ja hospedados !\noptins: \n/addchk [cmd] -C (especifica o chat / grupo ) caso nao seja especificado ele ira recebe do chat atual\n/addchk [cmd] -D (altera a descricao de chk /ja add no bot ) \n/addchk [cmd] -E (altera o exemplo de uso do cmd)\n/addchk [cmd] -U (add a url do chk)\n/addchk [cmd] -S (altera o status do cmd on/off use: sim para fica off e nao para deixa on )\n/addchk [cmd] -DELL (apagara este cmd use: /addchk [cmd] -DELL )\nexemplo:\n/addchk ggs -C -1001330941820 -D checa ggs -E use: /ggs 4982xx|1x|2022|xx</b>","parse_mode" => "html")));
-	}
-
-	
-
-
-
-
-	if (in_array("-C", $args)){
-
-		$pos = buscaprox($msg,"-C");
-
-		if ($pos == "-C"){
-			$key = explode("-C", $str)[1];
-		}else{
-			$key = explode("-C", $str)[1];
-			$key = explode($pos, $key)[0];
-		}
-
-	}else{
-		$key = $chatid;
-
-	}
-	
-	
-	$key = trim($key);
-	
-	$confi = file_get_contents('./confi.json');
-	$confibot = json_decode($confi, true);
-
-	if ($confibot['chks'][$key][$cmd]['owner']){
-	 	if ($confibot['chks'][$key][$cmd]['owner'] != $user_id){
-	 		return;
-	 	}
-	}
-	if (in_array("-DELL", $args)){
-		
-		$pos = buscaprox($msg,"-DELL");
-		if ($pos == "-DELL"){
-			$opc = explode("-DELL", $str)[1];
-		}else{
-			$opc = explode("-DELL", $str)[1];
-			$opc = explode($pos, $opc)[0];
-		}
-
-		
-		if (strpos($opc, "sim") !== false || strpos($opc, "s") !== false || strpos($opc, "y") !== false){
-
-			if (!$confibot['chks'][$key][$cmd]){
-				sendMessage("sendMessage",array("chat_id" => $chatid,'text' =>"cmd not found"));
-				exit();
-			}
-			unset($confibot['chks'][$key][$cmd]); 
-			$dsalva = json_encode($confibot,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
-			$salva = file_put_contents('./confi.json', $dsalva);
-			if ($salva){
-				sendMessage("sendMessage",array("chat_id" => $chatid,'text' =>"cmd apagado !"));
-				exit();
-			}
-		}
-	}
-
-	if (in_array("-D", $args)){
-		
-		$pos = buscaprox($msg,"-D");
-		if ($pos == "-D"){
-			$desc = explode("-D", $str)[1];
-		}else{
-			$desc = explode("-D", $str)[1];
-			$desc = explode($pos, $desc)[0];
-		}
-	}else{
-		if ($confibot['chks'][$key][$cmd]['desc']){
-			$desc = $confibot['chks'][$key][$cmd]['desc'];
-		}else{
-			$desc = "CHECKER";
-		}
-		
-	}
-	
-	if (in_array("-E", $args)){
-		$pos = buscaprox($msg,"-E");
-		if ($pos == "-E"){
-			$modeUse = explode("-E", $str)[1];
-		}else{
-			$modeUse = explode("-E", $str)[1];
-			$modeUse = explode($pos, $modeUse)[0];
-		}
-	}else{
-		if ($confibot['chks'][$key][$cmd]['modeUse']){
-			$modeUse = $confibot['chks'][$key][$cmd]['modeUse'];
-		}else{
-			$modeUse = "use: $cmd [arg]";
-		}
-
-		
-	}
-
-	if (in_array("-S", $args)){
-		$pos = buscaprox($msg,"-S");
-		if ($pos == "-S"){
-			$onoff = explode("-S", $str)[1];
-		}else{
-			$onoff = explode("-S", $str)[1];
-			$onoff = explode($pos, $onoff)[0];
-		}
-	}else{
-		if ($confibot['chks'][$key][$cmd]['off']){
-			$onoff = $confibot['chks'][$key][$cmd]['off'];
-		}else{
-			$onoff = "false";
-		}
-
-		
-	}
-
-	if (in_array("-U", $args)){
-		$pos = buscaprox($msg,"-U");
-		if ($pos == "-U"){
-			$U = explode("-U", $str)[1];
-		}else{
-			$U = explode("-U", $str)[1];
-			$U = explode($pos, $U)[0];
-		}
-	}else{
-		if ($confibot['chks'][$key][$cmd]['url']){
-			$U = $confibot['chks'][$key][$cmd]['url'];
-		}else{
-			$U = "false";
-		}
-
-	}
-
-
-	$realdados = $confibot['chks'][$key][$cmd] = array(
-		"url" => trim($U),
-		"modeUse" => trim($modeUse),
-		"off" => trim($onoff),
-		"desc" => trim($desc),
-		"type" => trim("chk"),
-		"owner" => trim($user_id)
-	);
-	$dsalva = json_encode($confibot,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
-	$salva = file_put_contents('./confi.json', $dsalva);
-	if ($salva){
-		sendMessage("sendMessage",array("chat_id" => $chatid,'text' =>"salvo"));
-    	exit();
-	}
-
-}
-
-
 
 function buscap ($msg,$busca,$keys){
 	$args = explode(" ", $msg['text']);
@@ -1228,6 +1051,9 @@ function buscap ($msg,$busca,$keys){
 	return $ttt;
 
 }
+
+// -----------------------------------------------------------------------
+
 function addconkk($msg){
 
 	$chatid = $msg['chat']['id'];
@@ -1235,7 +1061,7 @@ function addconkk($msg){
 	$confi = file_get_contents('./confi.json');
 	$confibot = json_decode($confi, true);
 
-	$keys = ["-name" , "-c" , "-NAME" , "-C"];
+	$keys = ["-name" , "-chat" , "-NAME" , "-CHAT"];
 
 	$cmd = (buscap($msg , "-name" , $keys)) ? (buscap($msg , "-name" , $keys)) : (buscap($msg , "-CMD" , $keys)) ;
 
@@ -1276,7 +1102,7 @@ function editcon($msg){
 	$confi = file_get_contents('./confi.json');
 	$confibot = json_decode($confi, true);
 
-	$keys = ["-c" , "-d" ,"-e" , "-u", "-C" , "-D" , "-E" ,"-U" , "-name" , "-c" , "-NAME" , "-C"];
+	$keys = ["-chat" , "-d" ,"-e" , "-u", "-CHAT" , "-D" , "-E" ,"-U" , "-name" , "-chat" , "-NAME" , "-CHAT"];
 
 	
 	$cmd = (buscap($msg , "-name" , $keys)) ? (buscap($msg , "-name" , $keys)) : (buscap($msg , "-CMD" , $keys)) ;
@@ -1317,6 +1143,9 @@ function editcon($msg){
 	}
 
 	if (!empty($url)){
+		if (!strpos($url, '{doc}')!==false){
+			die(bot('sendMessage' , array("chat_id" => $chatid , 'text' => "o paramentro {doc} e necessario para indetifica onde sera passa o doc/valor no momento da consulta !\nreenvie da forma certa\nExemplos:\nhttps://exemplo.com/cpf/{doc}/results \nhttps://exemplo.com/con.php={doc}")));
+		}
 		$txt .= "Url: $url\n";
 		$confibot['consultas'][$chat][$cmd]['url'] = $url;
 	}
@@ -1378,4 +1207,177 @@ function dellcon($msg){
     	exit();
 	}
 	
+}
+
+//----------------------------------------------------------------------------------------------
+
+function addchk($msg){
+
+	$chatid = $msg['chat']['id'];
+	$fromid = $msg['from']['id'];
+	$confi = file_get_contents('./confi.json');
+	$confibot = json_decode($confi, true);
+
+
+	$keys = ["-name" , "-chat" , "-NAME" , "-CHAT"];
+
+	$cmd = (buscap($msg , "-name" , $keys)) ? (buscap($msg , "-name" , $keys)) : (buscap($msg , "-CMD" , $keys)) ;
+
+	$chat = (buscap($msg , "-chat" , $keys)) ? (buscap($msg , "-chat" , $keys)) : (buscap($msg , "-CHAT" , $keys)) ;
+
+	if (empty($cmd)){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "o -name e obrigatorio !")));	
+	}
+
+	$chat = (!empty($chat))? $chat : $chatid;
+
+	$cmd = trim($cmd);
+	$chat = trim($chat);
+
+	if ($confibot['chks'][$chat][$cmd]){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "ja existi um chk com esse name/cmd")));
+	}
+	
+
+	$confibot['chks'][$chat][$cmd]= array("owner" => $fromid , "off" => "false");
+	$dsalva = json_encode($confibot,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
+	$salva = file_put_contents('./confi.json', $dsalva);
+
+	if ($salva){
+		
+		sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "o cmd: $cmd \nfoi salvo user o edit para realiza alteracoes"));
+    	exit();
+	}
+	
+}
+
+
+function editchk($msg){
+
+	$chatid = $msg['chat']['id'];
+	$fromid = $msg['from']['id'];
+
+	$confi = file_get_contents('./confi.json');
+	$confibot = json_decode($confi, true);
+
+	$keys = ["-chat" , "-d" ,"-e" , "-u", "-D" , "-E" ,"-U" , "-name" , "-NAME" , "-CHAT"];
+
+	
+	$cmd = (buscap($msg , "-name" , $keys)) ? (buscap($msg , "-name" , $keys)) : (buscap($msg , "-CMD" , $keys)) ;
+
+	$chat = (buscap($msg , "-chat" , $keys)) ? (buscap($msg , "-chat" , $keys)) : (buscap($msg , "-CHAT" , $keys)) ;
+
+	$desc = (buscap($msg , "-d" , $keys)) ? (buscap($msg , "-d" , $keys)) : (buscap($msg , "-D" , $keys)) ;
+
+	$url = (buscap($msg , "-u" , $keys)) ? (buscap($msg , "-u" , $keys)) : (buscap($msg , "-U" , $keys)) ;
+
+	$modeUse = (buscap($msg , "-e" , $keys)) ? (buscap($msg , "-e" , $keys)) : (buscap($msg , "-E" , $keys)) ;
+
+	if (empty($cmd)){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "o -name e obrigatorio !")));	
+	}
+
+	$chat = (!empty($chat))? $chat : $chatid;
+
+	$cmd = trim($cmd);
+	$chat = trim($chat);
+	$desc = trim($desc);
+	$url = trim($url);
+	$modeUse = trim($modeUse);
+
+
+	if (!$confibot['chks'][$chat][$cmd]){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "Nao existi um chk com esse name/cmd")));
+	}
+	
+	if ($confibot['chks'][$chat][$cmd]['owner'] != $fromid){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "Error , o chatId de quem add esta no chk e diferente do seu !\nvc so pode edita chks que vc adicionou!")));
+	}
+	$txt = "Alteracoes Feitas\n\n";
+
+	if (!empty($desc)){
+		$txt .= "descricao: $desc\n";
+		$confibot['chks'][$chat][$cmd]['desc'] = $desc;
+	}
+
+	if (!empty($url)){
+		
+		$txt .= "Url: $url\n";
+		$confibot['chks'][$chat][$cmd]['url'] = $url;
+	}
+
+	if (!empty($modeUse)){
+		$txt .= "exemplo de uso: $modeUse\n";
+		$confibot['chks'][$chat][$cmd]['modeUse'] = $modeUse;
+	}
+
+
+	$dsalva = json_encode($confibot,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
+	$salva = file_put_contents('./confi.json', $dsalva);
+
+	if ($salva){
+		
+		sendMessage("sendMessage",array("chat_id" => $chatid,'text' => $txt));
+    	exit();
+	}
+	
+}
+
+
+function dellchk($msg){
+
+	$chatid = $msg['chat']['id'];
+	$fromid = $msg['from']['id'];
+
+	$confi = file_get_contents('./confi.json');
+	$confibot = json_decode($confi, true);
+
+	$keys = ["-chat" , "-name","-NAME" , "-CHAT"];
+	$cmd = (buscap($msg , "-name" , $keys)) ? (buscap($msg , "-name" , $keys)) : (buscap($msg , "-CMD" , $keys)) ;
+	$chat = (buscap($msg , "-chat" , $keys)) ? (buscap($msg , "-chat" , $keys)) : (buscap($msg , "-CHAT" , $keys)) ;
+
+	if (empty($cmd)){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "o -name e obrigatorio !")));	
+	}
+	
+	$chat = (!empty($chat))? $chat : $chatid;
+	
+	$cmd = trim($cmd);
+	$chat = trim($chat);
+	
+	if (!$confibot['chks'][$chat][$cmd]){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "Nao existi uma consulta com esse name/cmd")));
+	}
+	if ($confibot['chks'][$chat][$cmd]['owner'] != $fromid){
+		die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "Error , o chatId de quem add esta consulta e diferente do seu !\nvc so pode edita consultas que vc adicionou!")));
+	}
+	
+	unset($confibot['chks'][$chat][$cmd]);
+
+	$dsalva = json_encode($confibot,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
+	$salva = file_put_contents('./confi.json', $dsalva);
+
+	if ($salva){
+		
+		sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "cmd deletado"));
+    	exit();
+	}
+	
+}
+
+
+function removedb($id){
+	$users = file_get_contents('./users.json');
+	$users = json_decode($users, true);
+	$grups = file_get_contents('./grups.json');
+	$grups = json_decode($grups, true);
+
+	unset($users[$id]);
+	unset($grups[$id]);
+
+	$dsalva1 = json_encode($users,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
+	$salva = file_put_contents('./users.json', $dsalva1);
+
+	$dsalva2 = json_encode($grups,JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
+	$salva = file_put_contents('./grups.json', $dsalva2);
 }
