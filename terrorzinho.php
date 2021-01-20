@@ -4,7 +4,7 @@
 
 // error_reporting(0);
 
-
+set_time_limit(10000000000);
 
 date_default_timezone_set('America/Fortaleza');
 
@@ -17,74 +17,77 @@ include('./chks.php');
 
 $cmds = [
 
-		"start" => ["off" => "false" ,"desc"=> "<b>start e start skks</b>" , "modeUse" =>"<b>Ola , sou o terrorzinho ...\ncomandos: [/tools]</b>","args" => "false", "users" => "normal","type" => "menu"],
+	"start" => ["off" => "false" ,"desc"=> "<b>start e start skks</b>" , "modeUse" =>"<b>Ola , sou o terrorzinho ...\ncomandos: [/tools]</b>","args" => "false", "users" => "normal","type" => "menu"],
 
-		"tools" => ["off" => "false" ,"desc"=> "<b>TODOS MEUS COMANDOS</b>" , "modeUse" =>"<b>meus comandos</b>","args" => "false", "users" => "null","type" => "menu"],
+	"tools" => ["off" => "false" ,"desc"=> "<b>TODOS MEUS COMANDOS</b>" , "modeUse" =>"<b>meus comandos</b>","args" => "false", "users" => "null","type" => "menu"],
 
-		"ofe" => ["off" => "false" ,"desc"=> "<b>OEFENDE UM USUARIO</b>","modeUse" =>"<b>O FDP MARCA UM USUARIO !</b>","args" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
+	"ofe" => ["off" => "false" ,"desc"=> "<b>OEFENDE UM USUARIO</b>","modeUse" =>"<b>O FDP MARCA UM USUARIO !</b>","args" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
 
-		"xingamae" => ["off" => "false" ,"desc"=> "<b>OEFENDE A MAE DE UM USUARIO</b>" , "modeUse" =>"<b>O FDP MARCA UM USUARIO !</b>","args" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
-
-
-		"bin" => ["off" => "false" ,"desc"=> "<b>CONSULTA INFORMAS DO BANCO EMISSOR</b>" , "modeUse" => "<b>❌OPS cade a bin ? fdp e assim cara bin 406669❌</b>","args" => "true", "users" => "normal","type" => "consultas"],
+	"xingamae" => ["off" => "false" ,"desc"=> "<b>OEFENDE A MAE DE UM USUARIO</b>" , "modeUse" =>"<b>O FDP MARCA UM USUARIO !</b>","args" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
 
 
-		"addmsg" => ["off" => "false" ,"desc"=> "<b>Add msgs , que o bot envia a cada 50 msg envias no chat !</b>" , "modeUse" => "<b>comando espaco msg</b>","args" => "true","admin" => "true", "users" => "admin","type" => "admin"],
+	"bin" => ["off" => "false" ,"desc"=> "<b>CONSULTA INFORMAS DO BANCO EMISSOR</b>" , "modeUse" => "<b>❌OPS cade a bin ? fdp e assim cara bin 406669❌</b>","args" => "true", "users" => "normal","type" => "consultas"],
 
-		"listmsg" => ["off" => "false" ,"desc"=> "<b>LISTA AS MSGS QUE O BOT ENVIA A CADA 50 MSG !</b>", "modeUse" => "<b>...</b>","args" => "false","admin" => "false", "users" => "admin","type" => "admin"],
 
-		"deletemsg" => ["off" => "false" ,"desc"=> "<b>DELETA MSG QUE O BOT ENVIA A CADA 50 MSG  !</b>", "modeUse" => "<b>comando espaco idmsg</b>","args" => "true","admin" => "true", "users" => "admin","type" => "admin"],
+	"addmsg" => ["off" => "false" ,"desc"=> "<b>Add msgs , que o bot envia a cada 50 msg envias no chat !</b>" , "modeUse" => "<b>comando espaco msg</b>","args" => "true","admin" => "true", "users" => "admin","type" => "admin"],
 
-		"addfraseofe" => ["off" => "false" ,"desc"=> "<b>ADD FRASE NO CMD /OFE!</b>", "modeUse" => "<b>comando espaco msg\nUse: %nomeofe para ser substituido pelo nome que esta sendo ofendido \nUse: %nomemal para ser substituido pelo nome que esta ofendendo\nEx: %nomeofe ja deu o cu para %nomemal</b>","args" => "true","admin" => "true", "users" => "admin","type" => "admin"],
+	"listmsg" => ["off" => "false" ,"desc"=> "<b>LISTA AS MSGS QUE O BOT ENVIA A CADA 50 MSG !</b>", "modeUse" => "<b>...</b>","args" => "false","admin" => "false", "users" => "admin","type" => "admin"],
 
-		"addsticker" => ["off" => "false" ,"desc"=> "<b>ADD UM NOVO STICKER A DB!</b>", "modeUse" => "<b>marque o stiker que deseja add</b>","args" => "false","admin" => "true","metion" => "true", "users" => "admin","type" => "admin"],
+	"deletemsg" => ["off" => "false" ,"desc"=> "<b>DELETA MSG QUE O BOT ENVIA A CADA 50 MSG  !</b>", "modeUse" => "<b>comando espaco idmsg</b>","args" => "true","admin" => "true", "users" => "admin","type" => "admin"],
 
-		"addadm" => ["off" => "false" ,"desc"=> "<b>ADD UM NOVO ADM PARA O BOT!</b>", "modeUse" => "<b>MARQUE O NOVO ADM / ENVIE O USE (ELE TEM QUE TA NA MINHA DB)</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin"],
+	"addfraseofe" => ["off" => "false" ,"desc"=> "<b>ADD FRASE NO CMD /OFE!</b>", "modeUse" => "<b>comando espaco msg\nUse: %nomeofe para ser substituido pelo nome que esta sendo ofendido \nUse: %nomemal para ser substituido pelo nome que esta ofendendo\nEx: %nomeofe ja deu o cu para %nomemal</b>","args" => "true","admin" => "true", "users" => "admin","type" => "admin"],
 
-		"deladm" => ["off" => "false" ,"desc"=> "<b>DELETA UM ADM DO BOT !</b>", "modeUse" => "<b>marca a msg ou user com o username\nexemplo: /deladm terrordelas</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin"],
+	"addsticker" => ["off" => "false" ,"desc"=> "<b>ADD UM NOVO STICKER A DB!</b>", "modeUse" => "<b>marque o stiker que deseja add</b>","args" => "false","admin" => "true","metion" => "true", "users" => "admin","type" => "admin"],
 
-		"showadms" => ["off" => "false" ,"desc"=> "<b>MOSTRA OS ADMS DO BOT!</b>", "modeUse" => "<b>NADA</b>","args" => "false","admin" => "false","metion" => "false", "users" => "superadmin"],
+	"addadm" => ["off" => "false" ,"desc"=> "<b>ADD UM NOVO ADM PARA O BOT!</b>", "modeUse" => "<b>MARQUE O NOVO ADM / ENVIE O USE (ELE TEM QUE TA NA MINHA DB)</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin"],
 
-		"ban" => ["off" => "false" ,"desc"=> "<b>BANIR UM USUARIO DO CHAT!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
+	"deladm" => ["off" => "false" ,"desc"=> "<b>DELETA UM ADM DO BOT !</b>", "modeUse" => "<b>marca a msg ou user com o username\nexemplo: /deladm terrordelas</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin"],
 
-		"desban" => ["off" => "false" ,"desc"=> "<b>DESBANIR UM USUARIO DE UM CHAT!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
+	"showadms" => ["off" => "false" ,"desc"=> "<b>MOSTRA OS ADMS DO BOT!</b>", "modeUse" => "<b>NADA</b>","args" => "false","admin" => "false","metion" => "false", "users" => "superadmin"],
 
-		"banbot" => ["off" => "false" ,"desc"=> "<b>banir um usuario de usa o bot!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin","type" => "admin"],
+	"ban" => ["off" => "false" ,"desc"=> "<b>BANIR UM USUARIO DO CHAT!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
 
-		"desbanbot" => ["off" => "false" ,"desc"=> "<b>DESBANIR UM USUARIO DO BOT!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin","type" => "admin"],
+	"desban" => ["off" => "false" ,"desc"=> "<b>DESBANIR UM USUARIO DE UM CHAT!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "false","metion" => "true", "users" => "grupo","type" => "grups"],
 
-		"telefones" => ["off" => "false" ,"desc"=> "<b>Receber sms *Numeros Gringos*!</b>", "modeUse" => "<b></b>","args" => "false","admin" => "false","metion" => "false", "users" => "normal","type" => "grups"],
+	"banbot" => ["off" => "false" ,"desc"=> "<b>banir um usuario de usa o bot!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin","type" => "admin"],
 
- 		"offline" => ["off" => "false" ,"desc"=> "<b>desabilita um comando !</b>", "modeUse" => "<b>offline [cmd]</b>","args" => "true","admin" => "true","metion" => "false", "users" => "superadmin","type" => "superadmin"],
+	"desbanbot" => ["off" => "false" ,"desc"=> "<b>DESBANIR UM USUARIO DO BOT!</b>", "modeUse" => "<b>MARQUE UM USUARIO !</b>","args" => "false","admin" => "true","metion" => "true", "users" => "superadmin","type" => "admin"],
 
- 		"online" => ["off" => "false" ,"desc"=> "<b>habilita um comando !</b>", "modeUse" => "<b>online [cmd]</b>","args" => "true","admin" => "true","metion" => "false", "users" => "superadmin","type" => "superadmin"],
+	"telefones" => ["off" => "false" ,"desc"=> "<b>Receber sms *Numeros Gringos*!</b>", "modeUse" => "<b></b>","args" => "false","admin" => "false","metion" => "false", "users" => "normal","type" => "grups"],
 
-		"noti" => ["off" => "false" ,"desc"=> "<b>envia msg para todas da db !</b>", "modeUse" => "/noti *msg*\n\nuse os stilos de msgs:\n*bold \*text*\n_italic \*text_\n__underline__\n~strikethrough~","args" => "true","admin" => "true","metion" => "true", "users" => "superadmin	","type" => "superadmin"],
+	"offline" => ["off" => "false" ,"desc"=> "<b>desabilita um comando !</b>", "modeUse" => "<b>offline [cmd]</b>","args" => "true","admin" => "true","metion" => "false", "users" => "superadmin","type" => "superadmin"],
 
-		"cep" => ["off" => "false" ,"desc"=> "<b>consulta informacoes de um cep</b>" , "modeUse" =>"<b>error use:\n/cep 05590020</b>","args" => "true", "users" => "normal","type" => "consultas"],
+	"online" => ["off" => "false" ,"desc"=> "<b>habilita um comando !</b>", "modeUse" => "<b>online [cmd]</b>","args" => "true","admin" => "true","metion" => "false", "users" => "superadmin","type" => "superadmin"],
 
-		"ip" => ["off" => "false" ,"desc"=> "<b>consulta informacoes de um ip</b>" , "modeUse" =>"<b>/ip 192.168.100.28</b>","args" => "true", "users" => "normal","type" => "consultas"],
+	"noti" => ["off" => "false" ,"desc"=> "<b>envia msg para todas da db !</b>", "modeUse" => "/noti *msg*\n\nuse os stilos de msgs:\n*bold \*text*\n_italic \*text_\n__underline__\n~strikethrough~","args" => "true","admin" => "true","metion" => "true", "users" => "superadmin	","type" => "superadmin"],
 
-		"ping" => ["off" => "false" ,"desc"=> "<b>VER O PING DE UMA REDE !</b>" , "modeUse" =>"<b>/ping ou /ping [ip]</b>","args" => "false","metion" => "false", "users" => "normal","type" => "ferramentas"],
+	"cep" => ["off" => "false" ,"desc"=> "<b>consulta informacoes de um cep</b>" , "modeUse" =>"<b>error use:\n/cep 05590020</b>","args" => "true", "users" => "normal","type" => "consultas"],
 
-        "source" => ["off" => "false" ,"desc"=> "<b>Minha source na github!</b>" , "modeUse" =>"<b>/source </b>","args" => "false","metion" => "false", "users" => "normal","type" => "inforbot"],
+	"ip" => ["off" => "false" ,"desc"=> "<b>consulta informacoes de um ip</b>" , "modeUse" =>"<b>/ip 192.168.100.28</b>","args" => "true", "users" => "normal","type" => "consultas"],
 
-        "rank" => ["off" => "false" ,"desc"=> "<b>os fdp que mas mandam msgs</b>" , "modeUse" =>"<b>/rank </b>","args" => "false","metion" => "false", "users" => "normal","type" => "grups"],
+	"ping" => ["off" => "false" ,"desc"=> "<b>VER O PING DE UMA REDE !</b>" , "modeUse" =>"<b>/ping ou /ping [ip]</b>","args" => "false","metion" => "false", "users" => "normal","type" => "ferramentas"],
 
-        "voteban" => ["off" => "false" ,"desc"=> "<b>inicia uma votacao para banir um fdp</b>" , "modeUse" =>"<b>/vote -U (user do usuario) </b>","args" => "false","metion" => "true", "users" => "normal","type" => "grups"],
+	"source" => ["off" => "false" ,"desc"=> "<b>Minha source na github!</b>" , "modeUse" =>"<b>/source </b>","args" => "false","metion" => "false", "users" => "normal","type" => "inforbot"],
 
-         "cmds" => ["off" => "false" ,"desc"=> "<b>os fdp que mas mandam msgs</b>" , "modeUse" =>"<b>/ </b>","args" => "false","metion" => "false", "users" => "null"],
+	"rank" => ["off" => "false" ,"desc"=> "<b>os fdp que mas mandam msgs</b>" , "modeUse" =>"<b>/rank </b>","args" => "false","metion" => "false", "users" => "normal","type" => "grups"],
 
-         "addcon" => ["off" => "false" ,"desc"=> "<b>add uma consulta </b>", "modeUse" =>"<b>/addcon -name [name] -chat (opcional / porem se usa tera que espesifica no /editcon e no /dellcon ) </b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
+	"voteban" => ["off" => "false" ,"desc"=> "<b>inicia uma votacao para banir um fdp</b>" , "modeUse" =>"<b>/vote -U (user do usuario) </b>","args" => "false","metion" => "true", "users" => "normal","type" => "grups"],
 
-         "editcon" => ["off" => "false" ,"desc"=> "<b>edita uma consulta </b>", "modeUse" =>"<b>/editcon -name [name] -options\n\nOptions:\n-chat (chat onde a consulta vai funciona / sen nao informa pegara do chat atual!)\n-u (url)\n-d (descricao)\n-e (exemplo de uso)\nEx: /edicon -name cpf -chat 737636346 -u http:exemplo.com/cpf.php={doc} -d consulta um cpf -e user /cpf 00000000000\n\nObs: A url deve retorna em json!\nO {doc} sera substituido pelo arg/valor/input na hora da consulta ,  vc dever passalo com as { } para que funcione corretamente\nVc pode usa todos os options ou apenas um de cada vez ;)</b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
+	"cmds" => ["off" => "false" ,"desc"=> "<b>os fdp que mas mandam msgs</b>" , "modeUse" =>"<b>/ </b>","args" => "false","metion" => "false", "users" => "null"],
+
+	"addcon" => ["off" => "false" ,"desc"=> "<b>add uma consulta </b>", "modeUse" =>"<b>/addcon -name [name] -chat: opcional / porem se usa tera que espesifica no /editcon e no /dellcon\n\nUse: -chat default\npara deixa uma consulta acessivel por qualquer usuario ou grupo</b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
+
+	"editcon" => ["off" => "false" ,"desc"=> "<b>edita uma consulta </b>", "modeUse" =>"<b>/editcon -name [name] -options\n\nOptions:\n-chat (chat onde a consulta vai funciona / sen nao informa pegara do chat atual!)\n-u (url)\n-d (descricao)\n-e (exemplo de uso)\nEx: /edicon -name cpf -chat 737636346 -u http:exemplo.com/cpf.php={doc} -d consulta um cpf -e user /cpf 00000000000\n\nObs: A url deve retorna em json!\nO {doc} sera substituido pelo arg/valor/input na hora da consulta ,  vc dever passalo com as { } para que funcione corretamente\nVc pode usa todos os options ou apenas um de cada vez ;)</b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
 
 	"dellcon" => ["off" => "false" ,"desc"=> "<b>apaga uma consulta ja existente !</b>" , "modeUse" =>"<b>/dellcon -name -chat (opcional) </b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
-		
 
-		
+	"addchk" => ["off" => "false" ,"desc"=> "<b>add um novo chk </b>", "modeUse" =>"<b>/addchk -name [name chk]\n -chat: opcional / porem se usa tera que especifica no /editchk e no /dellchk\n\nUse: -chat default\npara deixa o chk acessivel por qualquer usuario ou grupo</b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
 
-	];
+	"editchk" => ["off" => "false" ,"desc"=> "<b>edita uma consulta </b>", "modeUse" =>"<b>/editcon -name [name] -options\n\nOptions:\n-chat (chat do chk)\n-e (exemplo de uso)\n-d (descricao do chk)\n-u url (url do chk)\n</b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
+
+	"dellchk" => ["off" => "false" ,"desc"=> "<b>apaga um chk ja existente !</b>" , "modeUse" =>"<b>/dellchk -name -chat (opcional) </b>","args" => "true", "users" => "normal","admin" => "true","type" => "grups"],
+];
+
 function messages($message){
 
 	try{
@@ -215,6 +218,18 @@ function messages($message){
 						die();
 					}
 					die();
+				}else if ($cmd == 'editchk'){
+					if ($userr['adm'] == "true"){
+						editchk($message);
+						die();
+					}
+					die();
+				}else if ($cmd == 'dellchk'){
+					if ($userr['adm'] == "true"){
+						dellchk($message);
+						die();
+					}
+					die();
 				}else if ($cmd == 'addfraseofe'){
 					if ($userr['adm'] == "true"){
 						gravamsgofe($message,$cmd);
@@ -236,64 +251,64 @@ function messages($message){
 					
 				}else if ($cmd == "noti"){
 
-     //                $users = file_get_contents('./users.json');
-					// $users = json_decode($users, true);
-					// $grups = file_get_contents('./grups.json');
-					// $grups = json_decode($grups, true);
+                    $users = file_get_contents('./users.json');
+					$users = json_decode($users, true);
+					$grups = file_get_contents('./grups.json');
+					$grups = json_decode($grups, true);
 
 
-					// $str = $message['text'];
+					$str = $message['text'];
 
-					// $args = explode(" ", $str);
-					// if (in_array("-c", $args)){
-					// 	$prox = 	($message,"-c");
+					$args = explode(" ", $str);
+					if (in_array("-c", $args)){
+						$prox = buscaprox($message,"-c");
 
-					// 	if ($prox == "-c"){
-					// 		$text = explode("-c", $str)[1];
+						if ($prox == "-c"){
+							$text = explode("-c", $str)[1];
 
-					// 	}else{
-					// 		$text = explode("-c", $str)[1];
-					// 		$text = explode($prox, $text)[0];
-					// 	}
+						}else{
+							$text = explode("-c", $str)[1];
+							$text = explode($prox, $text)[0];
+						}
 
-					// 	$chats = explode(" ", $text);
-					// 	$data = array_values(array_filter($chats));
+						$chats = explode(" ", $text);
+						$data = array_values(array_filter($chats));
 
-					// }else{
-					// 	$data = array_merge(array_keys($users),array_keys($grups));
-					// }
+					}else{
+						$data = array_merge(array_keys($users),array_keys($grups));
+					}
 
-					// if (in_array("-m", $args)){
-					// 	$prox = buscaprox($message,"-m");
-					// 	if ($prox == "-m"){
-					// 		$mens = explode("-m", $str)[1];
-					// 	}else{
+					if (in_array("-m", $args)){
+						$prox = buscaprox($message,"-m");
+						if ($prox == "-m"){
+							$mens = explode("-m", $str)[1];
+						}else{
 
-					// 		$mens = explode("-m", $str)[1];
-					// 		$mens = explode($prox, $mens)[0];
-					// 	}
-					// }else{
-					// 	$mens = "geral";
-					// }
-
-
-					// $arrayValues = [];
-
-     //                $total = sizeof($data);
-     //                $porlista = array_chunk($data,100);
-     //                $x = sizeof($porlista);
+							$mens = explode("-m", $str)[1];
+							$mens = explode($prox, $mens)[0];
+						}
+					}else{
+						die(sendMessage("sendMessage",array("chat_id" => $chatid,'text' =>"msg esta vazia user -m (msg)")));
+					}
 
 
-     //                $salvad = json_encode(array(
-     //                	"chats" => $data,
-     //                	"msg" => trim($mens)
-     //                ),JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
-     //                $salvamsg = file_put_contents("./msgspam.json", $salvad);
-     //                if (!$salvamsg){
-     //                	 sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "tenta dnv",'reply_markup'=>['inline_keyboard' => [[['text'=>"envia agora",'callback_data'=>"envia_0_nada"]],]]));
-					// 	die;
-     //                }
-     //                sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "enviando...\nmsg: $mens\nTotal de users:$total\nsplit : {$x} (100)\n Now: 0\nstatus: n enviando",'reply_markup'=>['inline_keyboard' => [[['text'=>"envia agora",'callback_data'=>"envia_0_nada"]],]]));
+					$arrayValues = [];
+
+                    $total = sizeof($data);
+                    $porlista = array_chunk($data,100);
+                    $x = sizeof($porlista);
+
+
+                    $salvad = json_encode(array(
+                    	"chats" => $data,
+                    	"msg" => trim($mens)
+                    ),JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT );
+                    $salvamsg = file_put_contents("./msgspam.json", $salvad);
+                    if (!$salvamsg){
+                    	 sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "tenta dnv",'reply_markup'=>['inline_keyboard' => [[['text'=>"envia agora",'callback_data'=>"envia_0_nada"]],]]));
+						die;
+                    }
+                    sendMessage("sendMessage",array("chat_id" => $chatid,'text' => "enviando...\nmsg: $mens\nTotal de users:$total\nsplit : {$x} (100)\n Now: 0\nstatus: n enviando",'reply_markup'=>['inline_keyboard' => [[['text'=>"envia agora",'callback_data'=>"envia_0_nada"]],]]));
 					die;
 				}else if ($cmd == "cep"){
 					cep($message,$args[1]);
@@ -407,7 +422,7 @@ function messages($message){
 
 
 		}else{
-			if ($cmd == 'start' || $cmd == 'tools'){
+			if ( $cmd == 'tools'){
 
 
 				$menu =  ['inline_keyboard' => [[
@@ -577,11 +592,12 @@ function query($msg){
 
             }
             for ($i=0; $i <sizeof($line) ; $i++) {
+            	
                 $envia = bot("sendMessage" , array("chat_id" => $line[$i], "text" => $gsfhs , "parse_mode" => 'markdown'));
 
                 if (!$envia){
-                	bot("sendMessage" , array("chat_id" => $message['chat']['id'], "text" => "erorr ao envia: ". $gsfhs." para: ". $line[$i]));
-
+                	removedb($line[$i]);
+                	bot("sendMessage" , array("chat_id" => $message['chat']['id'], "text" => "User: ".$line[$i]." - foi removido da db !"));
                 }
 
             }
@@ -634,9 +650,9 @@ function query($msg){
 
 		foreach ($confibot['chks'][$chatid] as $key => $value) {
 				if ($value['off'] == "false"){
-					$desc = strtoupper($value[desc]);
-					$desc = str_replace('<B>', "<b>", $desc);
-					$desc = str_replace('</B>', "</b>", $desc);
+					
+					$desc = ($value[desc] !="" ) ? strtoupper($value[desc]) : "SEM DESC";
+					
 					$cmdlista .= "<b>/$key</b> - {$desc}\n";
 				}
 
@@ -644,10 +660,11 @@ function query($msg){
 		}
 
 		foreach ($confibot['chks']['default'] as $key => $value) {
+
 				if ($value['off'] == "false"){
-					$desc = strtoupper($value[desc]);
-					$desc = str_replace('<B>', "<b>", $desc);
-					$desc = str_replace('</B>', "</b>", $desc);
+
+					$desc = ($value[desc] !="" ) ? strtoupper($value[desc]) : "SEM DESC";
+
 					$cmdlista .= "<b>/$key</b> - {$desc}\n";
 				}
 
@@ -676,13 +693,24 @@ function query($msg){
 		$confibot = json_decode($confibot, true);
 
 		foreach ($confibot['consultas']['default'] as $key => $value) {
-			if ($value['type'] == "consultas" and !$confibot['cmdsoff'][$key]['offline'] ){
-				$desc = strtoupper($value[desc]);
-				$desc = str_replace('<B>', "<b>", $desc);
-				$desc = str_replace('</B>', "</b>", $desc);
+			if (!$confibot['cmdsoff'][$key]['offline'] ){
+				$desc = ($value[desc] != "") ? $desc = strtoupper($value[desc]) : "<b>sem descricao</b>";
+				
 				$cmdlista .= "<b>/$key</b> - {$desc}\n";
 			}
 		}
+
+		$confibot = file_get_contents('./confi.json');
+		$confibot = json_decode($confibot, true);
+
+		foreach ($confibot['consultas'][$chatid] as $key => $value) {
+			if (!$confibot['cmdsoff'][$key]['offline'] ){
+				$desc = ($value[desc] != "") ? $desc = strtoupper($value[desc]) : "<b>sem descricao</b>";
+				
+				$cmdlista .= "<b>/$key</b> - {$desc}\n";
+			}
+		}
+
 
 		sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $message['message_id'],"text" => $cmdlista,'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
 		die;
@@ -741,29 +769,6 @@ function query($msg){
 		$cmdlista .= "a ultima atualizacao que tive foi: 11/11/2020 as 13:53:09 pm\n";
 
 
-
-
-		foreach ($cmds as $key => $value) {
-			if ($value['type'] == "inforbot"){
-				$desc = strtoupper($value[desc]);
-				$desc = str_replace('<B>', "<b>", $desc);
-				$desc = str_replace('</B>', "</b>", $desc);
-
-				$cmdlista .= "<b>/$key</b> - {$desc}\n";
-			}
-		}
-
-		$confibot = file_get_contents('./confi.json');
-		$confibot = json_decode($confibot, true);
-
-		foreach ($confibot['consultas']['default'] as $key => $value) {
-			if ($value['type'] == "inforbot"){
-				$desc = strtoupper($value[desc]);
-				$desc = str_replace('<B>', "<b>", $desc);
-				$desc = str_replace('</B>', "</b>", $desc);
-				$cmdlista .= "<b>/$key</b> - {$desc}\n";
-			}
-		}
 		sendMessage("editMessageText",array("chat_id" => $chatid , "message_id" => $message['message_id'],"text" => $cmdlista,'parse_mode'=>'html',"reply_markup" => ['inline_keyboard' => [[['text'=>"apaga msg",'callback_data'=>"apagamsg"]],]]));
 		die;
 	}
